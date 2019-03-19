@@ -1,0 +1,259 @@
+1.空域低通滤波器：分别用高斯滤波器和中值滤波器去平滑测试图像test1和2，模板大小分别是3x3 ， 5x5 ，7x7； 分析各自优缺点；
+clear;
+p=imread('test1.pgm');
+figure(1)
+subplot (2,2,1) ; 
+imshow(p);
+title('test1.pgm的原始图像');
+%p1=rgb2gray(p);    %转为灰度图像
+ga3=fspecial('gaussian',[3 3]);   %高斯滤波
+pg3=imfilter(p,ga3,'replicate'); 
+subplot (2,2,2) ; 
+imshow(pg3);
+title('test1.pgm经3*3高斯滤波器后的图像');
+ga5=fspecial('gaussian',[5 5]);   %高斯滤波
+pg5=imfilter(p,ga5,'replicate'); 
+subplot (2,2,3) ; 
+imshow(pg5);
+title('test1.pgm经5*5高斯滤波器后的图像');
+ga7=fspecial('gaussian',[7 7]);   %高斯滤波
+pg7=imfilter(p,ga7,'replicate'); 
+subplot (2,2,4) ; 
+imshow(pg7);
+title('test1.pgm经7*7高斯滤波器后的图像');
+
+p=imread('test2.tif');
+figure(2)
+subplot (2,2,1) ; 
+imshow(p);
+title('test2.tif的原始图像');
+%p1=rgb2gray(p);    %转为灰度图像
+ga3=fspecial('gaussian',[3 3]);   %高斯滤波
+pg3=imfilter(p,ga3,'replicate'); 
+subplot (2,2,2) ; 
+imshow(pg3);
+title('test2.tif经3*3高斯滤波器后的图像');
+ga5=fspecial('gaussian',[5 5]);   %高斯滤波
+pg5=imfilter(p,ga5,'replicate'); 
+subplot (2,2,3) ; 
+imshow(pg5);
+title('test2.tif经5*5高斯滤波器后的图像');
+ga7=fspecial('gaussian',[7 7]);   %高斯滤波
+pg7=imfilter(p,ga7,'replicate'); 
+subplot (2,2,4) ; 
+imshow(pg7);
+title('test2.tif经7*7高斯滤波器后的图像');
+
+p=imread('test1.pgm');
+figure(3)
+subplot (2,2,1) ; 
+imshow(p);
+title('test1.pgm的原始图像');
+%p1=rgb2gray(p);    %转为灰度图像
+m3=medfilt2(p,[3 3]);%中值滤波
+subplot (2,2,2) ; 
+imshow(m3);
+title('test1.pgm经3*3中值滤波器后的图像');
+m5=medfilt2(p,[5 5]);%中值滤波
+subplot (2,2,3) ; 
+imshow(m5);
+title('test1.pgm经5*5中值滤波器后的图像');
+m7=medfilt2(p,[7 7]);%中值滤波
+subplot (2,2,4) ; 
+imshow(m7);
+title('test1.pgm经7*7中值滤波器后的图像');
+
+p=imread('test2.tif');
+figure(4)
+subplot (2,2,1) ; 
+imshow(p);
+title('test2.tif的原始图像');
+%p1=rgb2gray(p);    %转为灰度图像
+m3=medfilt2(p,[3 3]);%中值滤波
+subplot (2,2,2) ; 
+imshow(m3);
+title('test2.tif经3*3中值滤波器后的图像');
+m5=medfilt2(p,[5 5]);%中值滤波
+subplot (2,2,3) ; 
+imshow(m5);
+title('test2.tif经5*5中值滤波器后的图像');
+m7=medfilt2(p,[7 7]);%中值滤波
+subplot (2,2,4) ; 
+imshow(m7);
+title('test2.tif经7*7中值滤波器后的图像');
+
+2.利用固定方差 sigma=1.5产生高斯滤波器. 附件有产生高斯滤波器的方法； 分析各自优缺点；
+clear;
+p=imread('test1.pgm');
+figure(1)
+subplot (2,2,1) ; 
+imshow(p);
+title('test1.pgm的原始图像');
+%p1=rgb2gray(p);    %转为灰度图像
+ga3=fspecial('gaussian',[3 3],1.5);   %高斯滤波,方差为1.5
+pg3=imfilter(p,ga3,'replicate'); 
+subplot (2,2,2) ; 
+imshow(pg3);
+title('test1.pgm经3*3高斯滤波器后的图像');
+ga5=fspecial('gaussian',[5 5],1.5);   %高斯滤波,方差为1.5
+pg5=imfilter(p,ga5,'replicate'); 
+subplot (2,2,3) ; 
+imshow(pg5);
+title('test1.pgm经5*5高斯滤波器后的图像');
+ga7=fspecial('gaussian',[7 7],1.5);   %高斯滤波,方差为1.5
+pg7=imfilter(p,ga7,'replicate'); 
+subplot (2,2,4) ; 
+imshow(pg7);
+title('test1.pgm经7*7高斯滤波器后的图像');
+
+p=imread('test2.tif');
+figure(2)
+subplot (2,2,1) ; 
+imshow(p);
+title('test2.tif的原始图像');
+%p1=rgb2gray(p);    %转为灰度图像
+ga3=fspecial('gaussian',[3 3],1.5);   %高斯滤波,方差为1.5
+pg3=imfilter(p,ga3,'replicate'); 
+subplot (2,2,2) ; 
+imshow(pg3);
+title('test2.tif经3*3高斯滤波器后的图像');
+ga5=fspecial('gaussian',[5 5],1.5);   %高斯滤波,方差为1.5
+pg5=imfilter(p,ga5,'replicate'); 
+subplot (2,2,3) ; 
+imshow(pg5);
+title('test2.tif经5*5高斯滤波器后的图像');
+ga7=fspecial('gaussian',[7 7],1.5);   %高斯滤波,方差为1.5
+pg7=imfilter(p,ga7,'replicate'); 
+subplot (2,2,4) ; 
+imshow(pg7);
+title('test2.tif经7*7高斯滤波器后的图像');
+
+3.利用高通滤波器滤波测试图像test3,4：包括unsharp masking, Sobel edge detector, and Laplace edge detection；Canny algorithm.分析各自优缺点；
+%unsharp masking
+clear ;
+p=imread('test3_corrupt.pgm');
+figure(1)
+imshow(p);
+title('test3_corrupt的原始图像');
+ga5=fspecial('gaussian',[5 5],4);   %高斯滤波
+pg5=imfilter(p,ga5,'replicate'); 
+figure(2)
+imshow(pg5);
+title('test3_corrupt经高斯滤波器模糊的图像');
+a=p-pg5;
+figure(3)
+imshow(a);
+title('test3_corrupt的非锐化模板');
+p1=p+a*2;
+figure(4)
+imshow(p1);
+title('test3_corrupt经usharp masking的图像');
+
+clear ;
+p=imread('test4 copy.bmp');
+figure(5)
+imshow(p);
+title('test4 copy.bmp的原始图像');
+ga5=fspecial('gaussian',[9 9],4);   %高斯滤波
+pg5=imfilter(p,ga5,'replicate'); 
+figure(6)
+imshow(pg5);
+title('test4 copy.bmp经高斯滤波器模糊的图像');
+a=p-pg5;
+figure(7)
+imshow(a);
+title('test4 copy.bmp的非锐化模板');
+p1=p+a*2;
+figure(8)
+imshow(p1);
+title('test4 copy.bmp经usharp masking的图像');
+
+%Sobel edge detector
+clear ;
+p=imread('test3_corrupt.pgm');
+figure(1)
+imshow(p);
+title('test3_corrupt的原始图像');
+a1=[-1,0,1;-2,0,2;-1,0,1];
+a2=[-1,-2,-1;0,0,0;1,2,1];
+gx=conv2(p,a1,'same');
+gy=conv2(p,a2,'same');
+p1=abs(gx)+abs(gy);
+p1=uint8(p1);
+figure(2)
+imshow(p1);
+title('test3_corrupt经Sobel edge detector的图像');
+
+
+clear ;
+p=imread('test4 copy.bmp');
+figure(3)
+imshow(p);
+title('test4 copy的原始图像');
+a1=[-1,0,1;-2,0,2;-1,0,1];
+a2=[-1,-2,-1;0,0,0;1,2,1];
+gx=conv2(p,a1,'same');
+gy=conv2(p,a2,'same');
+p1=abs(gx)+abs(gy);
+p1=uint8(p1);
+figure(4)
+imshow(p1);
+title('test4 copy经Sobel edge detector的图像');
+
+%Laplace edge detection
+clear ;
+p=imread('test3_corrupt.pgm');
+figure(1)
+imshow(p);
+title('test3_corrupt的原始图像');
+[m,n]=size(p);
+a=zeros(m,n);
+a=p;
+for i=2:m-1
+    for j=2:n-1
+        p(i,j)=a(i-1,j-1)+a(i,j-1)+a(i-1,j)+a(i+1,j-1)+a(i-1,j+1)+a(i+1,j+1)+a(i+1,j)+a(i,j+1)-8*a(i,j);
+    end
+end
+figure(2)
+imshow(p);
+title('test3_corrupt经Laplace edge detection的图像');
+
+clear ;
+p=imread('test4 copy.bmp');
+figure(3)
+imshow(p);
+title('test4 copy的原始图像');
+[m,n]=size(p);
+a=zeros(m,n);
+a=p;
+for i=2:m-1
+    for j=2:n-1
+       p(i,j)=(a(i-1,j-1)+a(i,j-1)+a(i-1,j)+a(i+1,j-1)+a(i-1,j+1)+a(i+1,j+1)+a(i+1,j)+a(i,j+1)-8*a(i,j));
+       %p(i,j)=a(i,j-1)+a(i-1,j)+a(i+1,j)+a(i,j+1)-4*a(i,j);
+    end
+end
+p=uint8(p);
+figure(4)
+imshow(p);
+title('test4 copy经Laplace edge detection的图像');
+
+%Canny algorithm
+clear;
+p=imread('test3_corrupt.pgm');
+figure(1)
+imshow(p);
+title('test3_corrupt的原始图像');
+p1=edge(p,'canny');
+figure(2)
+imshow(p1);
+title('test3_corrupt经Canny algorithm的图像');
+
+clear;
+p=imread('test4 copy.bmp');
+figure(3)
+imshow(p);
+title('test4 copy的原始图像');
+p1=edge(p,'canny');
+figure(4)
+imshow(p1);
+title('test4 copy经Canny algorithm的图像');
